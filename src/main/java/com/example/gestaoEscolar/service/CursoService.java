@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -24,7 +25,7 @@ public class CursoService {
 
         return repository.findAll().stream()
                 .map(mapper::toResponse)
-                .toList();
+                .collect(Collectors.toList());
     }
 
     public CursoResponseDto salvarCurso(CursoRequestDto dto)throws SQLException {

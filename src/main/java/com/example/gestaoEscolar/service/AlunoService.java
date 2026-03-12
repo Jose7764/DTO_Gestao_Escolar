@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -24,7 +25,7 @@ public class AlunoService {
         return repository.findAll()
                 .stream()
                 .map(mapper::toResponse)
-                .toList();
+                .collect(Collectors.toList());
     }
 
     public AlunoResponseDto buscarAlunoPorId(long id)throws SQLException{
